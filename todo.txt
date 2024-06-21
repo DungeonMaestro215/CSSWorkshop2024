@@ -1,17 +1,21 @@
 Denver's TODO List:
 - Plan out 5 weeks
 - Modify Madison's Google Slides for each week
+	- add to the 'for fun' section on week0 slides
 	- And add links to Drive available to students
 
 - Create Skeleton website
 	- Brainstorm ideas for Advanced students (games?)
 - Add documentation to this github (and maybe also Google Drive?)
+- Create Feedback forms for each session
 
 _____________________________
 Tentative Schedule:
 Beginner:
 Week 0 - Intro, About Me, and the Command Line
-Week 1 - 
+	- maybe some dumb ice breaker
+	- installing VSCode and Python and a simple "Hello, World!" program
+Week 1 - Python Fundamentals (Variables, Lists, and Loops)
 Week 2 - 
 Week 3 - 
 Week 4 - 
