@@ -2,7 +2,7 @@
 Repository for the Summer 2024 CSS Computer Science Workshop
 
 ## Overview
-This is a Computer Science workshop lasting five weeks during the Summer of 2024 as part of the CSS program.
+This is a Computer Science workshop lasting five weeks during the Summer of 2024 as part of the CSS Summer EXCELerator program.
 
 ## Resources
 ![QR Code for this repository](images/qrcode.png)
