@@ -11,4 +11,4 @@ TinyURL: [https://tinyurl.com/csscs2024](https://tinyurl.com/csscs2024)
 
 Link: [https://github.com/DungeonMaestro215/CSSWorkshop2024/](https://github.com/DungeonMaestro215/CSSWorkshop2024/)
 
-Google Drive: [https://drive.google.com/drive/folders/1G8haaYqwysj91ro7_KsfbhnK11K0Xtjl?usp=sharing](https://drive.google.com/drive/folders/1G8haaYqwysj91ro7_KsfbhnK11K0Xtjl?usp=sharing)
+Google Drive: [https://drive.google.com/drive/folders/1XHWirIX57_pi1uHRVkwy_V91QHoZP4C1?usp=sharing](https://drive.google.com/drive/folders/1XHWirIX57_pi1uHRVkwy_V91QHoZP4C1?usp=sharing)
