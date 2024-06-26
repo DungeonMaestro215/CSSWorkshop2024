@@ -9,20 +9,23 @@ Denver's TODO List:
 - Add documentation to this github (and maybe also Google Drive?)
 - Create Feedback forms for each session
 
+Google Drive: [https://drive.google.com/drive/folders/1XHWirIX57_pi1uHRVkwy_V91QHoZP4C1?usp=sharing](https://drive.google.com/drive/folders/1XHWirIX57_pi1uHRVkwy_V91QHoZP4C1?usp=sharing)
+
+
 _____________________________
 Tentative Schedule:
 Beginner:
 Week 0 - Intro, About Me, and the Command Line
-	- maybe some dumb ice breaker
+	- maybe some dumb ice breaker (?)
 	- installing VSCode and Python and a simple "Hello, World!" program
 Week 1 - Python Fundamentals (Variables, Lists, and Loops)
-Week 2 - 
-Week 3 - 
-Week 4 - 
+Week 2 - Basic plotting and Snake Game
+Week 3 - Finishing Snake Game
+Week 4 - Finish working and present
 
 Advanced:
 Week 0 - Intro, About Me, and the Command Line
-Week 1 - 
-Week 2 - 
-Week 3 - 
-Week 4 - 
+Week 1 - Free time (work on website. Basic button interactions)
+Week 2 - Free time (work on website. improve Snake Game)
+Week 3 - Free time (work on website. anything goes! Meme page! Blog! More Games!)
+Week 4 - Finish working and present
