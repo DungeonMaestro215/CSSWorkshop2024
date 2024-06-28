@@ -13,3 +13,6 @@ I have set up a super basic website that we will build on top of this summer.
 ## Usage
 You can download these files and open them locally on your computer. 
 Additionally, the most recently updated version can be viewed on the web at [https://cs.unc.edu/~denmas22](https://cs.unc.edu/~denmas22). (**Note**: For some reason, this link is not working right now. 😔)
+
+## Helpful Websites
+* [https://www.w3schools.com/](https://www.w3schools.com/) - Amazing resource for learning the basics of web development
