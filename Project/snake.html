@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
+    <title>Snake Game</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -17,11 +17,14 @@
         </nav>
     </header>
     <main>
-        <h1>Welcome to My Website</h1>
-        <p>This is the home page.</p>
-        <button id="alertButton">Click me for alert</button>
-        <button id="colorButton">Change Background Color</button>
+        <h1>Snake Game</h1>
+        <canvas id="gameCanvas" width="400" height="400"></canvas>
+        <div id="gameOver" class="hidden">
+            <h2>Game Over</h2>
+            <button id="restartButton">Restart</button>
+        </div>
+        <p>Use the arrow keys to play.</p>
     </main>
-    <script src="script.js"></script>
+    <script src="snake.js"></script>
 </body>
 </html>
