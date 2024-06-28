@@ -20,10 +20,10 @@ main:
 	mov    	%rsp,%rbp
 
 	mov 	$1, %rax
-    mov 	$1, %rdi
-    mov 	$message, %rsi
-    mov 	$14, %rdx
-    syscall
+    	mov 	$1, %rdi
+    	mov 	$message, %rsi
+    	mov 	$14, %rdx
+    	syscall
     
 	mov    	%rbp,%rsp
 	pop    	%rbp
