@@ -27,7 +27,7 @@ def main():
         screen.fill("purple")
 
         ### Game rendering here ###
-        
+
         ###########################
 
         # 'Flip' display to show our scene
