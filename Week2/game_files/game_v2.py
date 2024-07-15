@@ -17,14 +17,19 @@ player = Player()
 
 def draw_player():
     # Body
-    pygame.draw.circle(screen, "black", player.position, player.radius+5)
-    pygame.draw.circle(screen, "red", player.position, player.radius)
+    diameter = 40
 
-    # Eyes
-    pygame.draw.circle(screen, "white", player.position + pygame.Vector2(-15, -10), 20)
-    pygame.draw.circle(screen, "white", player.position + pygame.Vector2( 15, -10), 20)
-    pygame.draw.circle(screen, "black", player.position + pygame.Vector2(-15, -10), 10)
-    pygame.draw.circle(screen, "black", player.position + pygame.Vector2( 15, -10), 10)
+    pygame.draw.circle(screen, "tan", player.position + (-37, 0), 15)
+    pygame.draw.circle(screen, "tan", player.position + ( 37, 0), 15)
+
+    pygame.draw.circle(screen, "red",   player.position, diameter)
+    pygame.draw.circle(screen, "white", player.position + (-10, -15), 20)
+    pygame.draw.circle(screen, "white", player.position + ( 10, -15), 20)
+    pygame.draw.circle(screen, "black", player.position + (-10, -15), 10)
+    pygame.draw.circle(screen, "black", player.position + ( 10, -15), 10)
+
+    pygame.draw.circle(screen, "green", player.position + (-25, 0), 10)
+    pygame.draw.circle(screen, "green", player.position + ( 25, 0), 10)
 
 # Move the player based on keyboard inputs
 def move_player(dt):
@@ -111,6 +116,9 @@ clouds = [
     [700, 75, 150], 
     [900, 150, 200],
     [900, 60, 210],
+    [500, 3, 1000],
+    [900, 60, 210],
+
     ]
 def draw_clouds(dt):
     for cloud in clouds:

@@ -24,10 +24,10 @@ def main():
                 running = False
 
         # Clear the screen for the next frame
-        screen.fill("purple")
+        screen.fill("pink")
 
         ### Game rendering here ###
-
+        pygame.draw.circle(screen, "red", (600, 350), 40)
         ###########################
 
         # 'Flip' display to show our scene

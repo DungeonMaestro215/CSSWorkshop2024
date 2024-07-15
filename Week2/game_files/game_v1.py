@@ -14,7 +14,19 @@ player = Player()
 def draw_player():
     # Body
     diameter = 40
-    pygame.draw.circle(screen, "red", player.position, diameter)
+
+
+    pygame.draw.circle(screen, "tan", player.position + (-37, 0), 15)
+    pygame.draw.circle(screen, "tan", player.position + ( 37, 0), 15)
+
+    pygame.draw.circle(screen, "red",   player.position, diameter)
+    pygame.draw.circle(screen, "white", player.position + (-10, -15), 20)
+    pygame.draw.circle(screen, "white", player.position + ( 10, -15), 20)
+    pygame.draw.circle(screen, "black", player.position + (-10, -15), 10)
+    pygame.draw.circle(screen, "black", player.position + ( 10, -15), 10)
+
+    pygame.draw.circle(screen, "green", player.position + (-25, 0), 10)
+    pygame.draw.circle(screen, "green", player.position + ( 25, 0), 10)
 
 # Move the player based on keyboard inputs
 def move_player(dt):
@@ -51,7 +63,7 @@ def main():
 
         # Clear the screen for the next frame
         background_color = "black"
-        # screen.fill(background_color)
+        screen.fill(background_color)
 
         ### Game rendering here ###
         move_player(dt)
