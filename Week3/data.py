@@ -1,3 +1,6 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
 colors = [
     "Blue",
     "Blue",
@@ -19,7 +22,7 @@ colors = [
     "Pink",
 ]
 
-numbers = [
+numbers = np.array([
     11,
     33,
     3,
@@ -38,9 +41,9 @@ numbers = [
     5,
     7,
     1,
-]
+])
 
-sibs = [
+sibs = np.array([
     6,
     1,
     2,
@@ -59,7 +62,7 @@ sibs = [
     2,
     2,
     3,
-]
+])
 
 heights = [
     60,
@@ -102,3 +105,38 @@ shoe = [
     9,
     9,
 ]
+
+
+
+new_colors = []
+for color in colors:
+    new_colors.append(color.lower())
+
+plt.hist(new_colors)
+plt.title("CSS Favorite Colors!")
+plt.show() 
+
+# Create a scatterplot
+plt.scatter(sibs, numbers)
+
+# Add titles and labels
+plt.title("Siblings vs Fav Nums")
+plt.xlabel("sibs")
+plt.ylabel("fav nums")
+
+# Show the plot
+plt.show()
+
+# Line of best fit:
+slope, intercept = np.polyfit(sibs, numbers, 1)
+print(slope, intercept)
+
+# Predict y values
+numbers_pred = slope * sibs + intercept
+
+# Calculate R² value
+ss_res = np.sum((numbers - numbers_pred) ** 2)
+ss_tot = np.sum((numbers - np.mean(numbers)) ** 2)
+r2 = 1 - (ss_res / ss_tot)
+
+print(f"R² value: {r2:.2f}")
