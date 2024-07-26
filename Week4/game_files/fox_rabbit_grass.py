@@ -6,9 +6,9 @@ import matplotlib.pyplot as plt
 pygame.init()
 
 # Screen dimensions and grid size
-screen_width = 800
-screen_height = 600
-box_size = 20
+screen_width = 1280
+screen_height = 720
+box_size = 30
 num_boxes_x = screen_width // box_size
 num_boxes_y = screen_height // box_size
 
@@ -27,20 +27,20 @@ def get_random_y():
 
 # Simulation parameters
 n_grasses = 200
-n_rabbits = 10
+n_rabbits = 25
 n_foxes = 5
 
-max_grass_energy = 5
-max_rabbit_energy = 10
-max_fox_energy = 20
+max_grass_energy = 8
+max_rabbit_energy = 20
+max_fox_energy = 40
 
-new_grass_chance = 0.8
-new_rabbit_chance = 0.10
-new_fox_chance = 0.05
+new_grass_chance = 0.04
+new_rabbit_chance = 0.30
+new_fox_chance = 0.15
 
-simulation_speed = 20
+simulation_speed = 5
 
-# Create grasses; [x, y]
+# Create grasses; [x, y, energy]
 grasses = []
 for i in range(n_grasses):
     grasses.append([get_random_x(), get_random_y(), max_grass_energy])
@@ -97,8 +97,8 @@ def move_rabbits():
         if rabbit[2] <= 0:
             rabbits.remove(rabbit)
 
-        if random.random() < new_rabbit_chance:
-            rabbits.append([get_random_x(), get_random_y(), max_rabbit_energy])
+        if random.random() < new_rabbit_chance and rabbit[2] > max_rabbit_energy / 2:
+            rabbits.append([get_random_x(), get_random_y(), max_rabbit_energy / 2])
 
 # Function to control all foxes
 def move_foxes():
@@ -117,8 +117,8 @@ def move_foxes():
         if fox[2] <= 0:
             foxes.remove(fox)
 
-        if random.random() < new_fox_chance:
-            foxes.append([get_random_x(), get_random_y(), max_fox_energy])
+        if random.random() < new_fox_chance and fox[2] > max_fox_energy / 2:
+            foxes.append([get_random_x(), get_random_y(), max_fox_energy / 2])
 
 # Main simulation loop
 grass_pop = [n_grasses]
@@ -138,14 +138,15 @@ def main():
         move_rabbits()
         move_foxes()
 
+        # Grow grass randomly
+        for grass in grasses:
+            if random.random() < new_grass_chance:
+                grasses.append([get_random_x(), get_random_y(), max_grass_energy])
+
         # Keep track of populations over time
         grass_pop.append(len(grasses))
         rabbit_pop.append(len(rabbits))
         fox_pop.append(len(foxes))
-
-        # Grow grass randomly
-        if random.random() < new_grass_chance:
-            grasses.append([get_random_x(), get_random_y(), max_grass_energy])
 
         # Draw entities
         draw_grass(grasses)
