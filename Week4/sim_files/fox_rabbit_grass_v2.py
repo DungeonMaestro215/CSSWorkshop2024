@@ -2,11 +2,6 @@ import pygame
 import random
 import matplotlib.pyplot as plt
 
-seed = random.randint(1000, 5000)
-print(f"Seed: {seed}")
-random.seed(seed)
-
-
 # Initialize Pygame
 pygame.init()
 
