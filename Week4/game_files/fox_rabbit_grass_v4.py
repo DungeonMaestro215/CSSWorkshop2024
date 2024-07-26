@@ -2,6 +2,11 @@ import pygame
 import random
 import matplotlib.pyplot as plt
 
+seed = random.randint(1000, 5000)
+print(f"Seed: {seed}")
+random.seed(seed)
+
+
 # Initialize Pygame
 pygame.init()
 
@@ -26,7 +31,7 @@ def get_random_y():
     return random.randint(0, num_boxes_y - 1) * box_size
 
 # Simulation parameters
-n_grasses = 150
+n_grasses = 200
 n_rabbits = 25
 n_foxes = 5
 
@@ -34,9 +39,9 @@ max_grass_energy = 8
 max_rabbit_energy = 20
 max_fox_energy = 40
 
-new_grass_chance = 0.04
-new_rabbit_chance = 0.10
-new_fox_chance = 0.01
+new_grass_chance = 0.02 * n_grasses
+new_rabbit_chance = 0.20 * n_rabbits
+new_fox_chance = 0.05 * n_foxes
 
 simulation_speed = 50
 
@@ -120,13 +125,13 @@ def move_nearest(animal, food_sources):
 def move_rabbits():
     for rabbit in rabbits:
         # Move and lose energy
-        # move_nearest(rabbit, grasses)
-        move_randomly(rabbit)
+        move_nearest(rabbit, grasses)
+        # move_randomly(rabbit)
         rabbit[2] -= 1
 
         # Eat grass
         for grass in grasses:
-            if rabbit[0] == grass[0] and rabbit[1] == grass[1]:
+            if rabbit[2] < max_rabbit_energy - grass[2] and rabbit[0] == grass[0] and rabbit[1] == grass[1]:
                 rabbit[2] = min(rabbit[2] + grass[2], max_rabbit_energy)
                 grasses.remove(grass)
                 break
@@ -134,7 +139,7 @@ def move_rabbits():
         if rabbit[2] <= 0:
             rabbits.remove(rabbit)
 
-        if random.random() < new_rabbit_chance and rabbit[2] > max_rabbit_energy / 2:
+        if random.random() < new_rabbit_chance / (len(rabbits) + 1) and rabbit[2] > max_rabbit_energy / 2:
             rabbits.append([get_random_x(), get_random_y(), max_rabbit_energy / 2])
 
 # Function to control all foxes
@@ -146,7 +151,7 @@ def move_foxes():
 
         # Eat rabbit
         for rabbit in rabbits:
-            if fox[0] == rabbit[0] and fox[1] == rabbit[1]:
+            if fox[2] < max_fox_energy - rabbit[2] and fox[0] == rabbit[0] and fox[1] == rabbit[1]:
                 fox[2] = min(fox[2] + rabbit[2], max_fox_energy)
                 rabbits.remove(rabbit)
                 break
@@ -154,7 +159,7 @@ def move_foxes():
         if fox[2] <= 0:
             foxes.remove(fox)
 
-        if random.random() < new_fox_chance and fox[2] > max_fox_energy / 2:
+        if random.random() < new_fox_chance / (len(foxes) + 1) and fox[2] > max_fox_energy / 2:
             foxes.append([get_random_x(), get_random_y(), max_fox_energy / 2])
 
 # Main simulation loop
@@ -177,13 +182,17 @@ def main():
 
         # Grow grass randomly
         for grass in grasses:
-            if random.random() < new_grass_chance:
+            if random.random() < new_grass_chance / (len(grasses) + 1):
                 grasses.append([get_random_x(), get_random_y(), max_grass_energy])
 
         # Keep track of populations over time
         grass_pop.append(len(grasses))
         rabbit_pop.append(len(rabbits))
         fox_pop.append(len(foxes))
+
+        if len(rabbits) == 0:
+            running = False
+
 
         # Draw entities
         draw_grass(grasses)
@@ -200,9 +209,6 @@ def main():
 
 
     # Plots
-    print(grass_pop)
-    print(rabbit_pop)
-    print(fox_pop)
     plt.plot(grass_pop, 'g-', label="grasses")
     plt.plot(rabbit_pop, 'y-', label="rabbits")
     plt.plot(fox_pop, 'r-', label="foxes")

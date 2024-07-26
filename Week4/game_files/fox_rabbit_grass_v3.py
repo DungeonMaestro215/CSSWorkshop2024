@@ -26,7 +26,7 @@ def get_random_y():
     return random.randint(0, num_boxes_y - 1) * box_size
 
 # Simulation parameters
-n_grasses = 100
+n_grasses = 200
 n_rabbits = 25
 n_foxes = 5
 
@@ -34,9 +34,9 @@ max_grass_energy = 8
 max_rabbit_energy = 20
 max_fox_energy = 40
 
-new_grass_chance = 0.04
-new_rabbit_chance = 0.30
-new_fox_chance = 0.15
+new_grass_chance = 0.02
+new_rabbit_chance = 0.10
+new_fox_chance = 0.05
 
 simulation_speed = 50
 
@@ -89,7 +89,7 @@ def move_rabbits():
 
         # Eat grass
         for grass in grasses:
-            if rabbit[0] == grass[0] and rabbit[1] == grass[1]:
+            if rabbit[2] < max_rabbit_energy - grass[2] and rabbit[0] == grass[0] and rabbit[1] == grass[1]:
                 rabbit[2] = min(rabbit[2] + grass[2], max_rabbit_energy)
                 grasses.remove(grass)
                 break
@@ -109,7 +109,7 @@ def move_foxes():
 
         # Eat rabbit
         for rabbit in rabbits:
-            if fox[0] == rabbit[0] and fox[1] == rabbit[1]:
+            if fox[2] < max_fox_energy - rabbit[2] and fox[0] == rabbit[0] and fox[1] == rabbit[1]:
                 fox[2] = min(fox[2] + rabbit[2], max_fox_energy)
                 rabbits.remove(rabbit)
                 break
@@ -125,6 +125,10 @@ grass_pop = [n_grasses]
 rabbit_pop = [n_rabbits]
 fox_pop = [n_foxes]
 def main():
+    seed = random.randint(1000, 5000)
+    print(f"Seed: {seed}")
+    random.seed(seed)
+
     running = True
     while running:
         for event in pygame.event.get():
@@ -148,6 +152,9 @@ def main():
         rabbit_pop.append(len(rabbits))
         fox_pop.append(len(foxes))
 
+        if len(rabbits) == 0:
+            running = False
+
         # Draw entities
         draw_grass(grasses)
         draw_rabbits(rabbits)
@@ -162,29 +169,26 @@ def main():
     pygame.quit()
 
 
-    # Plots
-    print(grass_pop)
-    print(rabbit_pop)
-    print(fox_pop)
-    plt.plot(grass_pop, 'g-', label="grasses")
-    plt.plot(rabbit_pop, 'y-', label="rabbits")
-    plt.plot(fox_pop, 'r-', label="foxes")
+    # # Plots
+    # plt.plot(grass_pop, 'g-', label="grasses")
+    # plt.plot(rabbit_pop, 'y-', label="rabbits")
+    # plt.plot(fox_pop, 'r-', label="foxes")
 
-    plt.title("Fox, Rabbit, and Grass Population over Time")
-    plt.xlabel("Time")
-    plt.ylabel("Population")
-    plt.legend()
-    plt.show()
+    # plt.title("Fox, Rabbit, and Grass Population over Time")
+    # plt.xlabel("Time")
+    # plt.ylabel("Population")
+    # plt.legend()
+    # plt.show()
 
-    plt.plot(grass_pop, rabbit_pop, 'g-')
-    plt.plot(rabbit_pop, fox_pop, 'y-')
-    plt.plot(fox_pop, grass_pop, 'r-')
+    # plt.plot(grass_pop, rabbit_pop, 'g-')
+    # plt.plot(rabbit_pop, fox_pop, 'y-')
+    # plt.plot(fox_pop, grass_pop, 'r-')
 
-    plt.title("Fox, Rabbit, and Grass Population over Time")
-    plt.xlabel("Population")
-    plt.ylabel("Population")
-    plt.legend()
-    plt.show()
+    # plt.title("Fox, Rabbit, and Grass Population over Time")
+    # plt.xlabel("Population")
+    # plt.ylabel("Population")
+    # plt.legend()
+    # plt.show()
 
 if __name__ == "__main__":
     main()

@@ -163,9 +163,6 @@ def main():
 
 
     # Plots
-    print(grass_pop)
-    print(rabbit_pop)
-    print(fox_pop)
     plt.plot(grass_pop, 'g-', label="grasses")
     plt.plot(rabbit_pop, 'y-', label="rabbits")
     plt.plot(fox_pop, 'r-', label="foxes")
