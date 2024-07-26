@@ -63,6 +63,7 @@ def draw_grass(grasses):
 def draw_rabbits(rabbits):
     for rabbit in rabbits:
         pygame.draw.rect(screen, "yellow", pygame.Rect(rabbit[0], rabbit[1], box_size, box_size))
+        pygame.draw.rect(screen, "yellow", pygame.Rect(rabbit[0], rabbit[1], box_size, box_size))
 
 def draw_foxes(foxes):
     for fox in foxes:

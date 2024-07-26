@@ -36,7 +36,7 @@ max_fox_energy = 40
 
 new_grass_chance = 0.02 * n_grasses
 new_rabbit_chance = 0.20 * n_rabbits
-new_fox_chance = 0.05 * n_foxes
+new_fox_chance = 0.10 * n_foxes
 
 simulation_speed = 5
 
@@ -62,11 +62,21 @@ def draw_grass(grasses):
 
 def draw_rabbits(rabbits):
     for rabbit in rabbits:
-        pygame.draw.rect(screen, "yellow", pygame.Rect(rabbit[0], rabbit[1], box_size, box_size))
+        pygame.draw.rect(screen, "yellow", pygame.Rect(rabbit[0], rabbit[1], box_size, box_size*0.8))
+        pygame.draw.rect(screen, "yellow", pygame.Rect(rabbit[0]-box_size*0.2, rabbit[1]-box_size*0.2, box_size*0.2, box_size*0.8))
+        pygame.draw.rect(screen, "yellow", pygame.Rect(rabbit[0]+box_size*0.2, rabbit[1]-box_size*0.2, box_size*0.2, box_size*0.8))
 
 def draw_foxes(foxes):
     for fox in foxes:
-        pygame.draw.rect(screen, "red", pygame.Rect(fox[0], fox[1], box_size, box_size))
+        pygame.draw.circle(screen, "red", (fox[0], fox[1]), box_size/2)
+        pygame.draw.polygon(screen, "red", [(fox[0]-box_size/2+5, fox[1]-box_size*0.8), 
+                                            (fox[0]-box_size/2, fox[1]-box_size/2+5), 
+                                            (fox[0]-box_size/2+10, fox[1]-box_size/2+5)
+                                            ])
+        pygame.draw.polygon(screen, "red", [(fox[0]+box_size/2-5, fox[1]-box_size*0.8), 
+                                            (fox[0]+box_size/2, fox[1]-box_size/2+5), 
+                                            (fox[0]+box_size/2-10, fox[1]-box_size/2+5)
+                                            ])
 
 # Function to move a single rabbits/foxes randomly
 def move_randomly(animal):
@@ -120,8 +130,8 @@ def move_nearest(animal, food_sources):
 def move_rabbits():
     for rabbit in rabbits:
         # Move and lose energy
-        # move_nearest(rabbit, grasses)
-        move_randomly(rabbit)
+        move_nearest(rabbit, grasses)
+        # move_randomly(rabbit)
         rabbit[2] -= 1
 
         # Eat grass
@@ -141,8 +151,8 @@ def move_rabbits():
 def move_foxes():
     for fox in foxes:
         # Move and lose energy
-        # move_nearest(fox, rabbits)
-        move_randomly(fox)
+        move_nearest(fox, rabbits)
+        # move_randomly(fox)
         fox[2] -= 1
 
         # Eat rabbit

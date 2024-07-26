@@ -13,11 +13,11 @@ pygame.display.set_caption("Drawing!")
 # Clock for controlling the frame rate
 clock = pygame.time.Clock()
 
-box_size = 30
+box_size = 60
 # Remember: [x, y, energy]
 grass = [60, 60, 8]
-rabbit = [100, 100, 15]
-fox = [60, 100, 40]
+rabbit = [500, 500, 15]
+fox = [1000, 100, 40]
 
 # Your drawing!
 def draw():
@@ -25,10 +25,20 @@ def draw():
     pygame.draw.rect(screen, "green", pygame.Rect(grass[0], grass[1], box_size, box_size))
 
     # Rabbit
-    pygame.draw.rect(screen, "yellow", pygame.Rect(rabbit[0], rabbit[1], box_size, box_size))
+    pygame.draw.rect(screen, "yellow", pygame.Rect(rabbit[0], rabbit[1], box_size, box_size*0.8))
+    pygame.draw.rect(screen, "yellow", pygame.Rect(rabbit[0]-box_size*0.2, rabbit[1]-box_size*0.2, box_size*0.2, box_size*0.8))
+    pygame.draw.rect(screen, "yellow", pygame.Rect(rabbit[0]+box_size*0.2, rabbit[1]-box_size*0.2, box_size*0.2, box_size*0.8))
 
     # Fox
-    pygame.draw.rect(screen, "red", pygame.Rect(fox[0], fox[1], box_size, box_size))
+    pygame.draw.circle(screen, "red", (fox[0], fox[1]), box_size/2)
+    pygame.draw.polygon(screen, "red", [(fox[0]-box_size/2+5, fox[1]-box_size*0.8), 
+                                        (fox[0]-box_size/2, fox[1]-box_size/2+5), 
+                                        (fox[0]-box_size/2+10, fox[1]-box_size/2+5)
+                                        ])
+    pygame.draw.polygon(screen, "red", [(fox[0]+box_size/2-5, fox[1]-box_size*0.8), 
+                                        (fox[0]+box_size/2, fox[1]-box_size/2+5), 
+                                        (fox[0]+box_size/2-10, fox[1]-box_size/2+5)
+                                        ])
 
 
 # Display Drawing
