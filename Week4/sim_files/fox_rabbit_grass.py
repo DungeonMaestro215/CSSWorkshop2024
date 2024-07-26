@@ -35,8 +35,8 @@ max_rabbit_energy = 20
 max_fox_energy = 40
 
 new_grass_chance = 0.04
-new_rabbit_chance = 0.30
-new_fox_chance = 0.15
+new_rabbit_chance = 0.20
+new_fox_chance = 0.10
 
 simulation_speed = 5
 
@@ -69,16 +69,16 @@ def draw_foxes(foxes):
         pygame.draw.rect(screen, "red", pygame.Rect(fox[0], fox[1], box_size, box_size))
 
 # Function to move a single rabbits/foxes randomly
-def move_randomly(entity):
+def move_randomly(animal):
     direction = random.choice(["LEFT", "RIGHT", "UP", "DOWN"])
-    if direction == "LEFT" and entity[0] > 0:
-        entity[0] -= box_size
-    elif direction == "RIGHT" and entity[0] < (num_boxes_x - 1) * box_size:
-        entity[0] += box_size
-    elif direction == "UP" and entity[1] > 0:
-        entity[1] -= box_size
-    elif direction == "DOWN" and entity[1] < (num_boxes_y - 1) * box_size:
-        entity[1] += box_size
+    if direction == "LEFT" and animal[0] > 0:
+        animal[0] -= box_size
+    elif direction == "RIGHT" and animal[0] < (num_boxes_x - 1) * box_size:
+        animal[0] += box_size
+    elif direction == "UP" and animal[1] > 0:
+        animal[1] -= box_size
+    elif direction == "DOWN" and animal[1] < (num_boxes_y - 1) * box_size:
+        animal[1] += box_size
 
 # Function to control all rabbits
 def move_rabbits():

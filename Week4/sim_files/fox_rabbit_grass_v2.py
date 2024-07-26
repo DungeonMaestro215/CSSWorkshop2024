@@ -125,8 +125,8 @@ def move_nearest(animal, food_sources):
 def move_rabbits():
     for rabbit in rabbits:
         # Move and lose energy
-        move_nearest(rabbit, grasses)
-        # move_randomly(rabbit)
+        # move_nearest(rabbit, grasses)
+        move_randomly(rabbit)
         rabbit[2] -= 1
 
         # Eat grass
@@ -146,7 +146,8 @@ def move_rabbits():
 def move_foxes():
     for fox in foxes:
         # Move and lose energy
-        move_nearest(fox, rabbits)
+        # move_nearest(fox, rabbits)
+        move_randomly(fox)
         fox[2] -= 1
 
         # Eat rabbit
