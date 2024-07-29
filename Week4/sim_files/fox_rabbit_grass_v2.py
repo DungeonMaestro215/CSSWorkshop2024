@@ -8,7 +8,7 @@ pygame.init()
 # Screen dimensions and grid size
 screen_width = 1280
 screen_height = 720
-box_size = 30
+box_size = 20
 num_boxes_x = screen_width // box_size
 num_boxes_y = screen_height // box_size
 
